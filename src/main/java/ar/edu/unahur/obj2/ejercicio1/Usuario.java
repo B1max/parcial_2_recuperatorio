@@ -2,26 +2,14 @@ package ar.edu.unahur.obj2.ejercicio1;
 
 public class Usuario {
 
-    private String tipoDeUsuario;
+    private Permiso tipoDeUsuario;
 
-    public Usuario(String tipoDeUsuario) {
+    public Usuario(Permiso tipoDeUsuario) {
         this.tipoDeUsuario = tipoDeUsuario;
     }
+    public Usuario(String usuario){tipoDeUsuario = new PermisoInexistente();    }
 
     public String permisosLogin() {
-
-        String permisosDeUsuario;
-
-        if (tipoDeUsuario.equals("PROFESOR")) {
-            permisosDeUsuario="Permisos de profesor";
-        } else if (tipoDeUsuario.equals("ALUMNO")) {
-            permisosDeUsuario="Permisos de alumno";
-        } else if (tipoDeUsuario.equals("AYUDANTE")) {
-            permisosDeUsuario="Permisos de ayudante";
-        } else {
-            throw new RuntimeException("Tipo de usuario inexistente");
-        }
-
-        return permisosDeUsuario;
+        return tipoDeUsuario.mostrarPermiso();
     }
 }

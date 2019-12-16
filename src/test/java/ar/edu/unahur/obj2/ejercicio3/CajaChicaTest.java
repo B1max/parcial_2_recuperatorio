@@ -4,25 +4,23 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.testng.Assert.*;
 
 public class CajaChicaTest {
 
-    private Movimiento movimiento1;
-    private Movimiento movimiento2;
-    private Movimiento movimiento3;
+    private MovimientoIngreso movimiento1;
+    private MovimientoEgreso movimiento2;
+    private MovimientoEgreso movimiento3;
     private CajaChica cajaChica;
 
 
     @BeforeMethod
     public void setUp() {
         cajaChica = new CajaChica(new ArrayList<>(), 100);
-        movimiento1 = new Movimiento(TipoMovimiento.INGRESO, 15);
-        movimiento2 = new Movimiento(TipoMovimiento.EGRESO, 30);
-        movimiento3 = new Movimiento(TipoMovimiento.EGRESO, 10);
+        movimiento1 = new MovimientoIngreso(15);
+        movimiento2 = new MovimientoEgreso( 30);
+        movimiento3 = new MovimientoEgreso(10);
     }
 
     @Test

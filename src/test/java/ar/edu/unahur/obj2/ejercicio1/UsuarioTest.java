@@ -15,9 +15,9 @@ public class UsuarioTest {
 
     @BeforeMethod
     public void setUp() {
-        profesor = new Usuario("PROFESOR");
-        alumno = new Usuario("ALUMNO");
-        ayudante = new Usuario("AYUDANTE");
+        profesor = new Usuario(new PermisoProfesor());
+        alumno = new Usuario(new PermisoAlumno());
+        ayudante = new Usuario(new PermisoAyudante());
         rector = new Usuario("RECTOR");
     }
 

@@ -1,50 +1,48 @@
 package ar.edu.unahur.obj2.ejercicio2;
 
 public class CafeExpresso {
+    private Estado estadoActual;
+    private Estado apagada = new EstadoApagada(this);
+    private Estado encendida = new EstadoEncendida(this);
 
-    private boolean encendida;
+    public CafeExpresso() {
+        this.estadoActual = apagada;
+    }
 
-
-    public void encender(){
-        if(!isEncendida()){
-            setEncendida(Boolean.TRUE);
-            System.out.println("Máquina encendida");
-        }else {
-            System.out.println("La máquina ya está encendida");
-        }
+    public void encender() {
+        estadoActual = encendida;
     }
 
 
-    public void apagar(){
-        if(isEncendida()){
-            setEncendida(Boolean.FALSE);
-            System.out.println("Máquina apagada");
-        }else {
-            System.out.println("La máquina ya está apagada");
-        }
+    public void apagar() {
+        estadoActual = apagada;
     }
 
-    public void servirCafe(){
-        if(isEncendida()){
-            System.out.println("Sirviendo Café");
-        }else
-            System.out.println("La máquina está apagada");
+    public void servirCafe() {
+        estadoActual.servirCafe();
     }
 
-    public void darVapor(){
-        if(isEncendida()){
-            System.out.println("Generando vapor");
-        }else
-            System.out.println("La máquina está apagada");
+    public void darVapor() {
+        estadoActual.darVapor();
     }
 
     public boolean isEncendida() {
-        return encendida;
+        return estadoActual.isEncendida();
     }
 
-    public void setEncendida(boolean encendida) {
-        this.encendida = encendida;
+    public void setEncendida(boolean encendid) {
+        if (encendid) {
+            setEncendida();
+        } else {
+            setApagada();
+        }
     }
 
+    public void setApagada() {
+        estadoActual = apagada;
+    }
 
+    public void setEncendida() {
+        estadoActual = encendida;
+    }
 }
